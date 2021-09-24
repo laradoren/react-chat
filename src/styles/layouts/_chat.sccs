@@ -1,0 +1,135 @@
+
+.chat {
+  display: flex;
+  background-color: white;
+  width: 70%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.04);
+  height: 100%;
+
+  &__sidebar {
+    width: auto;
+    border-right: 1px solid #f4f7fd;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 19.5px 20px;
+      border-bottom: 1px solid #f4f7fd;
+      margin-bottom: 20px;
+      & > div {
+        span {
+          display: inline-block;
+          margin-right: 5px;
+
+        }
+      }
+      .anticon {
+        opacity: 60%;
+        transition: opacity 0.15s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          opacity: 100%;
+        }
+      }
+    }
+    &-search {
+      padding: 0 20px 10px 20px;
+    }
+    &-dialogs {
+      .dialogs {
+        &__item {
+          cursor: pointer;
+          padding: 10px 20px;
+          margin-bottom: 0;
+          &:active, &:hover {
+            background-color: #f4f7fd;
+          }
+        }
+      }
+    }
+  }
+  &__dialog {
+    flex: 1;
+    &-header {
+      display: flex;
+      padding: 10px 20px;
+      border-bottom: 1px solid #f4f7fd;
+      justify-content: space-between;
+      align-items: center;
+      &-block{
+        width: 20px;
+        height: 20px;
+      }
+      &-info {
+        text-align: center;
+      }
+      &-username {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+      }
+      &-status {
+        color: #bfbfbf;
+        display: inline-block;
+        position: relative;
+
+        &::before {
+          display: block;
+          position: absolute;
+          top: 5px;
+          left: -11px;
+          content: "";
+          width: 6px;
+          height: 6px;
+          border-radius: 30px;
+          background-color: #d3d3d3;
+        }
+        &--online {
+          &::before {
+            background-color: #00c980;
+          }
+        }
+      }
+      &-more {
+        font-size: 22px;
+        opacity: 60%;
+        transition: opacity 0.15s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          opacity: 100%;
+        }
+      }
+    }
+    &-current {
+      padding: 20px 20px 0px 20px;
+      overflow: auto;
+      height: calc(100% - 127px);
+      .ant-empty {
+       display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &-input {
+      padding: 20px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      &-icon {
+        font-size: 20px;
+        opacity: 60%;
+        transition: opacity 0.15s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          opacity: 100%;
+        }
+      }
+      &-form {
+        width: 43vw;
+      }
+    }
+  }
+}

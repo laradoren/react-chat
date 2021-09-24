@@ -1,13 +1,20 @@
 import React from 'react';
 import {Form, Input} from "antd";
-import Icon, {LockOutlined, UserOutlined, MailOutlined, InfoCircleTwoTone} from "@ant-design/icons";
-import {Button, Block} from "components";
+import {LockOutlined, UserOutlined, MailOutlined, InfoCircleTwoTone} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 
-const RegisterForm = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-    };
+import {Button, Block} from "components";
+
+const RegisterForm = (props) => {
+    const {
+        values,
+        touched,
+        errors,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+    } = props;
+
     let success = true;
     return (
         <div>
@@ -16,60 +23,82 @@ const RegisterForm = () => {
                 <p>Please register for use chat!</p>
             </div>
             <Block>
-                {!success ?
+                {success ?
                     (
                         <Form
                             name="normal_login"
                             className="login-form"
-                            initialValues={{ remember: true }}
-                            onFinish={onFinish}
+                            onSubmit={handleSubmit}
                         >
                             <Form.Item
                                 name="email"
-                                hasFeedback validateStatus="success"
-                                rules={[{ required: true, message: 'Please input your Email!' }]}
+                                hasFeedback validateStatus={!touched.email ? "" : errors.email ? "error" : "success"}
+                                help={touched.email && errors.email}
                             >
                                 <Input
+                                    id="email"
                                     prefix={<MailOutlined className="site-form-item-icon" />}
                                     placeholder="Email"
                                     size="large"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.email}
                                 />
                             </Form.Item>
                             <Form.Item
                                 name="username"
-                                hasFeedback validateStatus="success"
-                                rules={[{ required: true, message: 'Please input your Username!' }]}
+                                hasFeedback validateStatus={!touched.username ? "" : (errors.username ? "error" : "success")}
+                                help={touched.username && errors.username}
                             >
                                 <Input
+                                    id="username"
                                     prefix={<UserOutlined className="site-form-item-icon" />}
                                     placeholder="Username"
                                     size="large"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.username}
                                 />
                             </Form.Item>
                             <Form.Item
-                                name="password"
-                                rules={[{ required: true, message: 'Please input your Password!' }]}
+                                name="password" hasFeedback
+                                validateStatus={!touched.password ? "" : errors.password ? "error" : "success"}
+                                help={touched.password && errors.password}
                             >
                                 <Input
+                                    id="password"
                                     prefix={<LockOutlined className="site-form-item-icon" />}
                                     type="password"
                                     placeholder="Password"
                                     size="large"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.password}
                                 />
                             </Form.Item>
                             <Form.Item
-                                name="password"
-                                rules={[{ required: true, message: 'Please repeat your Password!' }]}
+                                name="repeat" hasFeedback
+                                validateStatus={!touched.repeat ? "" : errors.repeat ? "error" : "success"}
+                                help={touched.repeat && errors.repeat}
                             >
                                 <Input
+                                    id="repeat"
                                     prefix={<LockOutlined className="site-form-item-icon" />}
                                     type="password"
                                     placeholder="Repeat password"
                                     size="large"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.repeat}
                                 />
                             </Form.Item>
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" className="login-form-button" size="large">
+                                <Button
+                                    type="primary"
+                                    htmlType="submit"
+                                    className="login-form-button"
+                                    size="large"
+                                    onClick={handleSubmit}>
                                     Register
                                 </Button>
                             </Form.Item>

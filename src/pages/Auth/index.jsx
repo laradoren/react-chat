@@ -1,12 +1,8 @@
-import React,  { useState, useEffect } from "react";
-import {Block, Button} from "../../components";
-import { Form, Input } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {LoginForm, RegisterForm} from "../../modules";
-
-
-import "./Auth.scss";
+import React from "react";
 import {Route} from "react-router-dom";
+
+import {LoginForm, RegisterForm} from "../../modules";
+import "./Auth.scss";
 
 const Auth = (props) => {
     return (
