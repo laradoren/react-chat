@@ -13,7 +13,6 @@ const Message = ({image, user, text, date, isMe, isRead, attachments, isTyping, 
     const [currentTime, setCurrentTime] = useState(0);
     const [progress, setProgress] = useState(0);
     const audioElem = useRef(null);
-
     useEffect(() => {
         if(audioElem.current) {
             audioElem.current.addEventListener("playing", () => {

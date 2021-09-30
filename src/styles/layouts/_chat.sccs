@@ -35,18 +35,6 @@
     &-search {
       padding: 0 20px 10px 20px;
     }
-    &-dialogs {
-      .dialogs {
-        &__item {
-          cursor: pointer;
-          padding: 10px 20px;
-          margin-bottom: 0;
-          &:active, &:hover {
-            background-color: #f4f7fd;
-          }
-        }
-      }
-    }
   }
   &__dialog {
     flex: 1;
@@ -101,8 +89,6 @@
       }
     }
     &-current {
-      padding: 20px 20px 0px 20px;
-      overflow: auto;
       height: calc(100% - 127px);
       .ant-empty {
        display: flex;
@@ -113,23 +99,6 @@
         width: 100%;
       }
     }
-    &-input {
-      padding: 20px;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      &-icon {
-        font-size: 20px;
-        opacity: 60%;
-        transition: opacity 0.15s ease-in-out;
-        cursor: pointer;
-        &:hover {
-          opacity: 100%;
-        }
-      }
-      &-form {
-        width: 43vw;
-      }
-    }
+
   }
 }

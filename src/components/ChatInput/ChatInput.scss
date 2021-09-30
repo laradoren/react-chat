@@ -1,0 +1,36 @@
+.chat-input {
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  &-emoji {
+    position: absolute;
+    bottom: 60px;
+    left: 30px;
+  }
+  &-icon {
+    font-size: 20px;
+    opacity: 60%;
+    transition: opacity 0.15s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      opacity: 100%;
+    }
+    //TODO make cursor on this element
+    .upload {
+      span {
+        cursor: pointer;
+        &:hover {
+          opacity: 100%;
+        }
+      }
+      input {
+        z-index: 2 !important;
+      }
+    }
+  }
+  &-form {
+    width: 43vw;
+  }
+}

@@ -7,7 +7,7 @@ import {DialogItem} from "../";
 import Search from "antd/es/input/Search";
 import {Empty} from "antd";
 
-const Dialogs = ({items, userId = 1, initialValue, onSearch}) => {
+const Dialogs = ({items, userId = 1, currentDialogId, initialValue, onSearch, onSelectDialog}) => {
     return (
         <Fragment>
             <div className="chat__sidebar-search">
@@ -20,11 +20,14 @@ const Dialogs = ({items, userId = 1, initialValue, onSearch}) => {
                 <div className="dialogs">
                     {items.length
                         ? orderBy(items, ['date'], ['desc']).map(item => <DialogItem
-                        key={item._id}
-                        user={item.user}
-                        message={item}
-                        unread = {6}
-                        isMe = {item.user._id === userId }/> )
+                            onSelect = {onSelectDialog}
+                            key={item._id}
+                            _id={item._id}
+                            user={item.user}
+                            message={item}
+                            unread = {6}
+                            selectedDialogId = {currentDialogId}
+                            isMe = {item.user._id === userId }/> )
                         : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
                 </div>
             </div>
@@ -32,18 +35,12 @@ const Dialogs = ({items, userId = 1, initialValue, onSearch}) => {
     )
 }
 
-Dialogs.defaultProps = {
-    items: {
-        user: PropTypes.object,
-        message: PropTypes.object
-    }
-};
 
 Dialogs.propTypes = {
-    items: PropTypes.object,
+    items: PropTypes.array,
     userId: PropTypes.number,
     initialValue: PropTypes.string,
-    onSearch: PropTypes.object
+    onSearch: PropTypes.func
 };
 
 export default Dialogs;

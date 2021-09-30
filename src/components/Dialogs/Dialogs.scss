@@ -4,7 +4,21 @@
   width: 300px;
   &__item {
     display: flex;
-    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    &:active, &:hover {
+      background-color: #f4f7fd;
+      .dialogs__item-info-bottom-count {
+        box-shadow: 0 0 0px 3px #f4f7fd;
+      }
+    }
+    &--selected, &--selected:hover  {
+      background-color: #1890ff;
+      color: #ffffff !important;
+      .dialogs__item-info-bottom-count {
+        box-shadow: 0 0 0px 3px #1890ff;
+      }
+    }
     $item : &;
     &-avatar {
       position: relative;
@@ -78,9 +92,7 @@
           text-align: center;
           line-height: 17px;
           box-shadow: 0 0 0px 3px #ffffff;
-          &:hover {
-            box-shadow: 0 0 0px 3px #f4f7fd;
-          }
+
         }
 
 
